@@ -1,0 +1,58 @@
+<router-outlet></router-outlet>
+<div class="container">
+  <form #loginForm="ngForm" (ngSubmit)="saveData()">
+    <label for="email">Your email:</label>
+    <br />
+    <input type="email" id="emailInput" name="email" [(ngModel)]="loginObject.email" #email="ngModel" required pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$" [(ngModel)]="signUpObj.email"/>
+    <br />
+    <div *ngIf="email.invalid && (email.dirty || email.touched)">
+      <div *ngIf="email.errors?.['required']">Email is required.</div>
+      <div *ngIf="email.errors?.['pattern']">Invalid email format.</div>
+    </div>
+    
+    <label for="username" id="usernameLabel">Your username:</label>
+    <br />
+    <input
+      type="text"
+      name="username"
+      id="usernameInput"
+      minlength="4"
+      maxlength="16"
+      [(ngModel)]="loginObject.username"
+      #username="ngModel"
+      required
+      [(ngModel)]="signUpObj.username"
+    />
+    <br />
+    <div *ngIf="username.invalid && (username.dirty || username.touched)">
+      <div *ngIf="username.errors?.['required']">Username is required.</div>
+      <div *ngIf="username.errors?.['minlength']">Username must be at least 4 characters long.</div>
+      <div *ngIf="username.errors?.['maxlength']">Username cannot be more than 16 characters long.</div>
+    </div>
+    
+    <label for="password">Your password:</label>
+    <br />
+    <input
+    type="password"
+    name="password"
+    id="passwordInput"
+    [(ngModel)]="loginObject.password"
+    #password="ngModel"
+    [ngModelOptions]="{standalone: true}"
+    required
+    minlength="8"
+    maxlength="32"
+    [(ngModel)]="signUpObj.password"
+  />
+  <br />
+  <div *ngIf="password.invalid && (password.dirty || password.touched)">
+    <div *ngIf="passwordErrorMessages.length > 0">
+      <div *ngFor="let message of passwordErrorMessages">{{ message }}</div>
+    </div>
+  </div>
+    <h4 id="changeToLogin">Already have an account? <span id="loginAnchor" (click)="changeToLogin()">Login</span></h4>
+    <h4 id="changeToSignup" class="hidden">Don't have an account yet? <span id="loginAnchor" (click)="changeToLogin()">Sign up</span></h4>
+    <button type="submit" [disabled]="loginForm.invalid" (click)="onSignUp()" id="signUp">Sign Up</button>
+    <button type="submit" [disabled]="loginForm.invalid" (click)="onLogin()" id="loginButton" class="hidden">Login</button>
+  </form>
+</div>

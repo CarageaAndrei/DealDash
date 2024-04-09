@@ -7,6 +7,7 @@ import { HaineComponent } from './haine/haine.component';
 import { HelpCenterComponent } from './help-center/help-center.component';
 import { VanzariComponent } from './vanzari/vanzari.component';
 import { MagazinComponent } from './magazin/magazin.component';
+import { LoginComponent } from './login/login.component';
 
 const routes: Routes = [
   {path: 'home', component: HomeComponent},
@@ -15,7 +16,8 @@ const routes: Routes = [
   {path: 'haine', component: HaineComponent},
   {path: 'help-center', component: HelpCenterComponent},
   {path: 'magazin', component: MagazinComponent},
-  {path: 'vanzari', component: VanzariComponent}
+  {path: 'vanzari', component: VanzariComponent},
+  {path: 'login', component: LoginComponent},
 ];
 
 @NgModule({

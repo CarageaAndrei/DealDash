@@ -1,2 +1,47 @@
-<p>vanzari works!</p>
 <router-outlet></router-outlet>
+
+<body>
+
+
+
+    <H1>Publicati un anunt nou </H1>
+    <h3>Detali anunt</h3>
+
+    <body>
+
+      <h2>Adăugare imagine</h2>
+<div class="container">
+<form action="/upload" method="post" enctype="multipart/form-data">
+    <input type="file" name="fileToUpload" id="fileToUpload">
+    <input type="submit" value="Încarcă imaginea" name="submit"><br>
+    <label for="email">Email:</label><br><br>
+    <input type="email" id="email" name="email"><br><br>
+    <label for="phone">Telefon:</label><br>
+    <input type="tel" id="phone" name="phone" pattern="[0-9]{10}" placeholder="Introduceți numărul de telefon"><br><br>
+</form></div>
+
+<section id="form">
+  <form>
+    <label for="title">Titlu Anunț:</label><br>
+    <input type="text" id="title" name="title"><br><br>
+    <label for="description">Descriere:</label><br>
+    <textarea id="description" name="description" rows="4" cols="50"></textarea><br><br>
+    <button type="submit" onclick="submitForm()">Adaugă Anunț</button>
+  </form>
+</section>
+
+      <footer>
+        <p>&copy; 2024 DealDash. Toate drepturile rezervate.</p>
+      </footer>
+      
+      <script src="script.js">
+      function submitForm() {
+  var title = document.getElementById("title").value;
+  var description = document.getElementById("description").value;
+  var email = document.getElementById("email").value;
+  var phone = document.getElementById("phone").value;
+  lert("Titlu: " + title + "\nDescriere: " + description + "\nEmail: " + email + "\nTelefon: " + phone);
+}
+
+      </script>
+      </body>
